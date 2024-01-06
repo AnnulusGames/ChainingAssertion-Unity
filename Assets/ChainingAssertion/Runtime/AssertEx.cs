@@ -62,21 +62,6 @@ namespace ChainingAssertion
             value.Is(false, message);
         }
 
-        public static void IsNaN(this float value, string message = "")
-        {
-            Assert.That(value, IS.NaN, message);
-        }
-
-        public static void IsNaN(this float? value, string message = "")
-        {
-            Assert.That(value, IS.NaN, message);
-        }
-
-        public static void IsNaN(this double value, string message = "")
-        {
-            Assert.That(value, IS.NaN, message);
-        }
-
         public static TExpected IsInstanceOf<TExpected>(this object value, string message = "")
         {
             Assert.IsInstanceOf<TExpected>(value, message);
