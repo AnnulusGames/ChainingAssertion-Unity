@@ -62,6 +62,16 @@ namespace ChainingAssertion
             value.Is(false, message);
         }
 
+        public static void IsNull<T>(this T actual)
+        {
+            Assert.IsNull(actual);
+        }
+
+        public static void IsNotNull<T>(this T actual)
+        {
+            Assert.IsNotNull(actual);
+        }
+
         public static TExpected IsInstanceOf<TExpected>(this object value, string message = "")
         {
             Assert.IsInstanceOf<TExpected>(value, message);
