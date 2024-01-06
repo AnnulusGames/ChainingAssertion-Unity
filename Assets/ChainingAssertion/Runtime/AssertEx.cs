@@ -109,12 +109,12 @@ namespace ChainingAssertion
             Assert.IsNotInstanceOf<TWrong>(value, message);
         }
 
-        public static void IsSameAs<T>(this T actual, T expected, string message = "")
+        public static void IsSameReferenceAs<T>(this T actual, T expected, string message = "")
         {
             Assert.AreSame(expected, actual, message);
         }
 
-        public static void IsNotSameAs<T>(this T actual, T notExpected, string message = "")
+        public static void IsNotSameReferenceAs<T>(this T actual, T notExpected, string message = "")
         {
             Assert.AreNotSame(notExpected, actual, message);
         }
