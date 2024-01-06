@@ -1,4 +1,5 @@
 # ChainingAssertion for Unity
+ Chaining Assertion for Unity Test Framework
 
 [![license](https://img.shields.io/badge/LICENSE-MIT-green.svg)](LICENSE)
 
