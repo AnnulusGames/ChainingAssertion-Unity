@@ -35,7 +35,7 @@ https://github.com/AnnulusGames/ChainingAssertion-Unity.git?path=Assets/Chaining
 }
 ```
 
-## Is/IsNot
+## Is / IsNot
 
 `Is()`/`IsNot()`拡張メソッドを用いて直感的にアサーションを行うことができます。
 
@@ -130,7 +130,7 @@ public class Example
 
 `AsDynamic()`を使用することで対象をdynamic型に変換し、privateメンバーに動的にアクセスすることが可能になります。
 
-> [!CAUTION]
+> [!WARNING]
 > `AsDynamic()`はIL2CPP環境では動作しません。そのためPlayModeテストでは代わりに`AsPrivateObject()`を使用することが推奨されます。
 
 ```cs

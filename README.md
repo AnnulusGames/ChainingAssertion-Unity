@@ -6,7 +6,9 @@
 
 ChainingAssertion for Unity is a method chaining based assertion library for Unity Test Framework.
 
-In addition to `Is()` and `AsDynamic()` provided in the original [ChainingAssertion](https://github.com/neuecc/ChainingAssertion), `IsApproximately()` that performs comparisons that take floating point and `AsPrivateObject()` that supports accessing private members using reflection for testing in IL2CPP (AOT environment) are provided.
+ChainingAssertion for Unity adds extension methods such as `Is()` and `AsDynamic()` from the original [ChainingAssertion](https://github.com/neuecc/ChainingAssertion) to Unity Test Framework.
+
+Additionally, there are additional functions such as `IsApproximately()`, which performs comparisons that take floating-point errors into account for float, Vector3, and Quaternion, and `AsPrivateObject()`, which supports access to private members using reflection for testing in IL2CPP (AOT environment).
 
 ## Setup
 
@@ -35,7 +37,7 @@ Alternatively, open Packages/manifest.json and add the following to the dependen
 }
 ```
 
-## Is/IsNot
+## Is / IsNot
 
 You can intuitively perform assertions using the `Is()`/`IsNot()` extension methods.
 
@@ -130,7 +132,7 @@ public class Example
 
 Using `AsDynamic()` converts the target to a dynamic type, enabling dynamic access to private members.
 
-> [!CAUTION]
+> [!WARNING]
 > `AsDynamic()` does not work in an IL2CPP environment. Therefore, it's recommended to use `AsPrivateObject()` instead for PlayMode tests.
 
 ```csharp
