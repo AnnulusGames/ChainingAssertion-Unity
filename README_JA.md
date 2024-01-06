@@ -2,30 +2,30 @@
 
 [![license](https://img.shields.io/badge/LICENSE-MIT-green.svg)](LICENSE)
 
-[日本語版READMEはこちら](README_JA.md)
+[English README is here](README.md)
 
-ChainingAssertion for Unity is a method chaining based assertion library for Unity Test Framework.
+ChainingAssertion for UnityはUnity Test Framework向けに実装されたメソッドチェーンベースのAssertionライブラリです。
 
-In addition to `Is()` and `AsDynamic()` provided in the original [ChainingAssertion](https://github.com/neuecc/ChainingAssertion), `IsApproximately()` that performs comparisons that take floating point and `AsPrivateObject()` that supports accessing private members using reflection for testing in IL2CPP (AOT environment) are provided.
+オリジナルの[ChainingAssertion](https://github.com/neuecc/ChainingAssertion)で提供される`Is()`や`AsDynamic()`に加え、`float`や`Vector3`、`Quaternion`の浮動小数点誤差を考慮した比較を行う`IsApproximately()`や、IL2CPP(AOT環境)でのテスト用にリフレクションを用いたprivateメンバーのアクセスをサポートする`AsPrivateObject()`などの機能が提供されています。
 
-## Setup
+## セットアップ
 
-### Requirements
+### 要件
 
-* Unity 2019.4 or later
-* Test Framework 1.0.0 or later
+* Unity 2019.4 以上
+* Test Framework 1.0.0 以上
 
-### Installation
+### インストール
 
-1. Open the Package Manager from Window > Package Manager.
-2. Click on the "+" button > Add package from git URL.
-3. Enter the following URL:
+1. Window > Package ManagerからPackage Managerを開く
+2. 「+」ボタン > Add package from git URL
+3. 以下のURLを入力する
 
 ```
 https://github.com/AnnulusGames/ChainingAssertion-Unity.git?path=Assets/ChainingAssertion
 ```
 
-Alternatively, open Packages/manifest.json and add the following to the dependencies block:
+あるいはPackages/manifest.jsonを開き、dependenciesブロックに以下を追記
 
 ```json
 {
@@ -37,9 +37,9 @@ Alternatively, open Packages/manifest.json and add the following to the dependen
 
 ## Is/IsNot
 
-You can intuitively perform assertions using the `Is()`/`IsNot()` extension methods.
+`Is()`/`IsNot()`拡張メソッドを用いて直感的にアサーションを行うことができます。
 
-```csharp
+```cs
 using System;
 using System.Linq;
 using NUnit.Framework;
@@ -72,9 +72,9 @@ public class Example
 
 ## Collection Assertions
 
-Combining LINQ to Objects with Chaining Assertion allows expressing assertions similar to CollectionAssert.
+LINQ to ObjectsとChaining Assertionを組み合わせることでCollectionAssertと同様のアサーションを表現できます。
 
-```csharp
+```cs
 var array = new[] { 1, 3, 7, 8 };
 
 array.Contains(8).IsTrue(); // CollectionAssert.Contains
@@ -85,16 +85,16 @@ array.OrderBy(x => x).Is(array); // CollectionAssert.IsOrdered
 
 ## IsApproximately
 
-For floating-point types like `float`, `Vector3`, `Quaternion`, etc., you can perform comparisons considering errors using `IsApproximately()`.
+`float`や`Vector3`、`Quaternion`などの浮動小数点型に対し、誤差を考慮した比較を`IsApproximately()`で行うことができます。
 
-```csharp
+```cs
 transform.position.IsApproximately(Vector3.one);
 transform.localEulerAngles.IsApproximately(new Vector3(0f, 0f, 90f), 0.001f);
 ```
 
 ## Other Assertions
 
-```csharp
+```cs
 using System;
 using NUnit.Framework;
 using ChainingAssertion;
@@ -128,12 +128,12 @@ public class Example
 
 ## AsDynamic
 
-Using `AsDynamic()` converts the target to a dynamic type, enabling dynamic access to private members.
+`AsDynamic()`を使用することで対象をdynamic型に変換し、privateメンバーに動的にアクセスすることが可能になります。
 
 > [!CAUTION]
-> `AsDynamic()` does not work in an IL2CPP environment. Therefore, it's recommended to use `AsPrivateObject()` instead for PlayMode tests.
+> `AsDynamic()`はIL2CPP環境では動作しません。そのためPlayModeテストでは代わりに`AsPrivateObject()`を使用することが推奨されます。
 
-```csharp
+```cs
 public class TestClass
 {
     public TestClass(string str)
@@ -164,9 +164,9 @@ Assert.AreEqual(actual.AsDynamic()._privateField, "bar");
 
 ## AsPrivateObject
 
-Using `AsPrivateObject()` converts the target to a `PrivateObject`, enabling access to private members using reflection. Use this instead of `AsDynamic()` when executing tests in an IL2CPP environment.
+`AsPrivateObject()`を使用することで対象を`PrivateObjcct`に変換し、対象のprivateメンバーにリフレクションを用いてアクセスすることが可能になります。IL2CPP環境でテストを実行する際は`AsDynamic()`の代わりにこちらを利用してください。
 
-```csharp
+```cs
 var actual = new TestClass("foo");
 Assert.AreEqual(actual.AsPrivateObject().GetField("_privateField"), "foo");
 Assert.AreEqual(actual.AsPrivateObject().GetProperty("PrivateProperty"), "foo");
@@ -176,6 +176,6 @@ actual.AsPrivateObject().SetFieldOrProperty("PrivateProperty", "bar");
 Assert.AreEqual(actual.AsPrivateObject().GetFieldOrProperty("_privateField"), "bar");
 ```
 
-## License
+## ライセンス
 
 [MIT License](LICENSE)
