@@ -55,13 +55,13 @@ namespace ChainingAssertion.Tests.Editor
         }
 
         [Test]
-        public void Test_IsSameAs()
+        public void Test_IsSameReferenceAs()
         {
             var a = Tuple.Create("foo");
             var b = a;
             var c = Tuple.Create("foo");
-            a.IsSameAs(b);
-            a.IsNotSameAs(c);
+            a.IsSameReferenceAs(b);
+            a.IsNotSameReferenceAs(c);
         }
 
         [Test]
