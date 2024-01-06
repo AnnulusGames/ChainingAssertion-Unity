@@ -119,16 +119,6 @@ namespace ChainingAssertion
             Assert.AreNotSame(notExpected, actual, message);
         }
 
-        public static void IsAssignableFrom<T>(this object actual, string message = "")
-        {
-            Assert.IsAssignableFrom<T>(actual, message);
-        }
-
-        public static void IsNotAssignableFrom<T>(this object actual, string message = "")
-        {
-            Assert.IsNotAssignableFrom<T>(actual, message);
-        }
-
         public static void IsApproximately(this float actual, float expected, float error = 0.00001f, string message = "")
         {
             Assert.That(actual, IS.EqualTo(expected).Using(new FloatEqualityComparer(error)), message);
