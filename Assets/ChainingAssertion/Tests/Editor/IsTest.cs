@@ -1,5 +1,7 @@
+using System;
+using System.Linq;
 using NUnit.Framework;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ChainingAssertion.Tests.Editor
 {
@@ -36,6 +38,46 @@ namespace ChainingAssertion.Tests.Editor
 
             actual.Is(expected);
             actual.IsNot(notExpected);
+        }
+
+        [Test]
+        public void Test_Is_Enumerable()
+        {
+            Enumerable.Range(0, 5).Is(0, 1, 2, 3, 4);
+            Enumerable.Range(0, 5).IsNot(0, 1, 2, 3, 4, 5);
+        }
+
+        [Test]
+        public void Test_IsInstanceOf_String()
+        {
+            "foo".IsInstanceOf<string>();
+            "foo".IsNotInstanceOf<int>();
+        }
+
+        [Test]
+        public void Test_IsSameAs()
+        {
+            var a = Tuple.Create("foo");
+            var b = a;
+            var c = Tuple.Create("foo");
+            a.IsSameAs(b);
+            a.IsNotSameAs(c);
+        }
+
+        [Test]
+        public void Test_IsNull()
+        {
+            object obj1 = null;
+            obj1.IsNull();
+            object obj2 = new();
+            obj2.IsNotNull();
+        }
+
+        [Test]
+        public void Test_IsTrue_IsFalse()
+        {
+            true.IsTrue();
+            false.IsFalse();
         }
     }
 }
