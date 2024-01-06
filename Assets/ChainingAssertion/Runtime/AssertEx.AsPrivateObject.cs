@@ -85,6 +85,7 @@ namespace ChainingAssertion
             throw new MissingMemberException();
         }
 
+        public object Invoke(string name) => Invoke(name, ReflectionHelper.TransparentFlags, null);
         public object Invoke(string name, object[] args) => Invoke(name, ReflectionHelper.TransparentFlags, args);
         public object Invoke(string name, BindingFlags bindingFlags, object[] args)
         {
