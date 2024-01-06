@@ -12,7 +12,7 @@ In addition to `Is()` and `AsDynamic()` provided in the original [ChainingAssert
 
 ### Requirements
 
-* Unity 2019.4 or later
+* Unity 2019.2 or later
 * Test Framework 1.0.0 or later
 
 ### Installation

@@ -12,7 +12,7 @@ ChainingAssertion for UnityはUnity Test Framework向けに実装されたメソ
 
 ### 要件
 
-* Unity 2019.4 以上
+* Unity 2019.2 以上
 * Test Framework 1.0.0 以上
 
 ### インストール
