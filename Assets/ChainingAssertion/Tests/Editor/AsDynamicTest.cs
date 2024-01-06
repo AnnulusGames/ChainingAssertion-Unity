@@ -28,6 +28,8 @@ namespace ChainingAssertion.Tests.Editor
             var instance = new TestClass(1);
             instance.AsDynamic().SetFoo(10);
             instance.Foo.Is(10);
+            instance.AsDynamic().SetFoo(20f);
+            instance.Foo.Is(20);
         }
 
         [Test]
@@ -61,6 +63,11 @@ namespace ChainingAssertion.Tests.Editor
             private void SetFoo(int value)
             {
                 _foo = value;
+            }
+
+            private void SetFoo(float value)
+            {
+                _foo = (int)value;
             }
         }
     }
